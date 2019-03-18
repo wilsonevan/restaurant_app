@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, } from 'react';
+import { Route, Switch, } from "react-router-dom";
+import Home from "./components/Home";
+import Dinner from "./components/Dinner";
+import Lunch from "./components/Lunch";
+import Brunch from "./components/Brunch";
+import NoMatch from "./components/NoMatch";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+// import Blog from "./components/Blog";
+// import { Container, } from "semantic-ui-react";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Fragment>
+    <Navbar />
+    {/* <Container> */}
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/dinner" component={Dinner} />
+        <Route exact path="/lunch" component={Lunch} />
+        <Route exact path="/brunch" component={Brunch} />
+        <Route component={NoMatch} />
+      </Switch>
+    {/* </Container> */}
+    <Footer />
+  </Fragment>
+)
 
 export default App;

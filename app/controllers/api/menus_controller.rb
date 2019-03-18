@@ -1,7 +1,8 @@
 class Api::MenusController < ApplicationController
 	before_action :set_menu, only: [ :update, :destroy ]
 	
-  def index
+	def index
+		# binding.pry
     render json: Menu.all
   end
 
@@ -31,7 +32,7 @@ class Api::MenusController < ApplicationController
 			params.require( :menu ).permit( :name )
 		end
 
-	def set_menu
-		@menu = Menu.find(params[:id])
-	end
+		def set_menu
+			@menu = Menu.find(params[:id])
+		end
 end
