@@ -1,4 +1,4 @@
-class Api::DishesController < ApplicationController
+class Api::V1::DishesController < ApplicationController
 	before_action :set_dish, only: [ :update, :destroy ]
 	
   def index
@@ -7,7 +7,8 @@ class Api::DishesController < ApplicationController
 
   def create
 		dish = Dish.new(dish_params)
-		
+		# dish[:menu_id] = @menu_id
+		binding.pry
 		if dish.save
 			render json: dish
 		else
@@ -29,7 +30,8 @@ class Api::DishesController < ApplicationController
 	private 
 		def dish_params
 			binding.pry
-			params.require(:dish).permit( :name, :description, :price, :dish_category, :menu_id )
+			# @menu_id = params[:menu_id]
+			params.require(:dish).permit( :menu_id, :name, :description, :price, :dish_category )
 		end
 
 	def set_dish

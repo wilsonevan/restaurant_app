@@ -12,7 +12,7 @@ class Dinner extends React.Component {
 
   componentDidMount() {
     // Display all of the dishes for the first menu
-    axios.get('/api/menus/1/dishes')
+    axios.get('/api/v1/menus/1/dishes')
       .then( res => { 
         console.log(res);
         this.setState({ dishes: res.data })
@@ -27,7 +27,7 @@ class Dinner extends React.Component {
     // TODO update state
     // console.log(dishData)
     // console.log({...dishData})
-    axios.post('/api/menus/1/dishes', {dish: {...dishData} })
+    axios.post('/api/v1/menus/1/dishes', {dish: {menu_id: "1", ...dishData}, } )
     .then( res => {
       const { dishes, } = this.state;
       this.setState({ menus: this.state.menus,

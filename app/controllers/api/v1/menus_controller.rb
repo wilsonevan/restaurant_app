@@ -1,4 +1,4 @@
-class Api::MenusController < ApplicationController
+class Api::V1::MenusController < ApplicationController
 	before_action :set_menu, only: [ :update, :destroy ]
 	
 	def index
