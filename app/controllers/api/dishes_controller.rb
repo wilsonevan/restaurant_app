@@ -28,7 +28,8 @@ class Api::DishesController < ApplicationController
 	
 	private 
 		def dish_params
-			params.require( :dish ).permit( :name, :description, :price, :dish_category, :menu_id, )
+			binding.pry
+			params.require(:dish).permit( :name, :description, :price, :dish_category, :menu_id )
 		end
 
 	def set_dish

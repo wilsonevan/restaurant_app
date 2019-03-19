@@ -1,6 +1,7 @@
 import React from "react";
 import {Container, } from "semantic-ui-react";
 import DinnerList from "./DinnerList";
+import DishForm from "./DishForm"
 import axios from "axios";
 
 class Dinner extends React.Component {
@@ -24,7 +25,14 @@ class Dinner extends React.Component {
   addDish = (dishData) => {
     // TODO make api call to rails server to add dish
     // TODO update state
-    
+    // console.log(dishData)
+    // console.log({...dishData})
+    axios.post('/api/menus/1/dishes', {dish: {...dishData} })
+    .then( res => {
+      const { dishes, } = this.state;
+      this.setState({ menus: this.state.menus,
+        dishes: [...dishes, res.data], });
+    })
   }
 
   updateDish = (id) => {
@@ -40,6 +48,7 @@ class Dinner extends React.Component {
 	render() {
 		return (
 			<Container>
+        <DishForm addDish={this.addDish}/>
         <DinnerList 
           dishes={this.state.dishes}
 				/>
